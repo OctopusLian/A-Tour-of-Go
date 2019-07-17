@@ -11,12 +11,12 @@ func walk(t *tree.Tree, ch chan int) {
 	if t == nil {
 		return
 	}
-	walk(t.Left, ch)
+	walk(t.Left, ch) //遍历左
 	ch <- t.Value
-	walk(t.Right, ch)
+	walk(t.Right, ch) //遍历右
 }
 
-// Walk 遍历 tree t 将所有的值从 tree 发送到 channel ch。
+// Walk 中序遍历 tree t 将所有的值从 tree 发送到 channel ch。
 func Walk(t *tree.Tree, ch chan int) {
 	walk(t, ch)
 	close(ch)
